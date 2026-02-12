@@ -8,7 +8,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class CheckinsService {
-	constructor(private prisma: PrismaService) {}
+	constructor(private prisma: PrismaService) { }
 
 	async create(
 		userId: number,
@@ -21,6 +21,12 @@ export class CheckinsService {
 
 		const todayDate =
 			createCheckinDto.date || new Date().toISOString().split('T')[0];
+		console.log('Check-in attempt:', {
+			userId,
+			providedDate: createCheckinDto.date,
+			calculatedDate: todayDate,
+			serverTime: new Date().toISOString(),
+		});
 
 		// Check if user already checked in today
 		// We can use the unique compound index in Prisma to handle this, or check manually

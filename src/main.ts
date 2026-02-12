@@ -12,6 +12,6 @@ async function bootstrap() {
     origin: ['http://localhost:5174', 'https://kbfynnys.com'],
     credentials: true,
   });
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
 bootstrap();

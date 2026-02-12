@@ -5,15 +5,15 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 @Controller('rankings')
 @UseGuards(JwtAuthGuard)
 export class RankingsController {
-  constructor(private readonly rankingsService: RankingsService) { }
+	constructor(private readonly rankingsService: RankingsService) {}
 
-  @Get('daily')
-  getDaily() {
-    return this.rankingsService.getDaily();
-  }
+	@Get('daily')
+	getDaily() {
+		return this.rankingsService.getDaily();
+	}
 
-  @Get('yearly')
-  getYearly() {
-    return this.rankingsService.getYearly();
-  }
+	@Get('yearly')
+	getYearly() {
+		return this.rankingsService.getYearly();
+	}
 }

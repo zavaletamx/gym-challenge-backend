@@ -3,7 +3,7 @@ import { RankingsService } from './rankings.service';
 import { RankingsController } from './rankings.controller';
 
 @Module({
-  controllers: [RankingsController],
-  providers: [RankingsService],
+	controllers: [RankingsController],
+	providers: [RankingsService],
 })
 export class RankingsModule {}

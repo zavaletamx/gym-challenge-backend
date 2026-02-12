@@ -10,18 +10,18 @@ import { CheckinsModule } from './checkins/checkins.module';
 import { RankingsModule } from './rankings/rankings.module';
 
 @Module({
-  imports: [
-    PrismaModule,
-    ServeStaticModule.forRoot({
-      rootPath: join(process.cwd(), 'uploads'),
-      serveRoot: '/uploads',
-    }),
-    AuthModule,
-    UsersModule,
-    CheckinsModule,
-    RankingsModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		PrismaModule,
+		ServeStaticModule.forRoot({
+			rootPath: join(process.cwd(), 'uploads'),
+			serveRoot: '/uploads',
+		}),
+		AuthModule,
+		UsersModule,
+		CheckinsModule,
+		RankingsModule,
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

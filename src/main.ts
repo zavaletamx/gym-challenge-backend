@@ -9,7 +9,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.use(cookieParser());
   app.enableCors({
-    origin: ['http://localhost:5174', 'https://kbfunnys.com', 'https://www.kbfunnys.com', /\.kbfunnys\.com$/],
+    origin: ['http://localhost:5174', 'https://kbfunnys.com', 'https://www.kbfunnys.com', 'https://api.kbfunnys.com/', 'https://www.api.kbfunnys.com/', /\.kbfunnys\.com$/],
 
     credentials: true,
   });

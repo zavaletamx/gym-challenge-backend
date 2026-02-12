@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STANDARD
+  ADMIN
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  name      String?
+  role      Role     @default(STANDARD)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  checkins  Checkin[]
+}
+
+model Checkin {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  imageUrl  String
+  latitude  Float
+  longitude Float
+  createdAt DateTime @default(now())
+
+  // Ensure one check-in per user per day.
+  // We will store only the date part in a specific field if strict database constraint is needed,
+  // or handle logic in application.
+  // However, `createdAt` includes time. Let's add a `date` string field effectively for the unique constraint.
+  date      String   // Format YYYY-MM-DD
+
+  @@unique([userId, date])
+}
